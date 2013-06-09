@@ -1,6 +1,6 @@
 # PinIO - Arduino pin management in javascript
 
-This is a simple node.js library for controlling multiple arduino boards and groups of pins. This is intended to be a fairly low-level library that exposes a library which makes lower-level management of Arduino pins easier.
+This is a simple node.js library for controlling multiple arduino boards and groups of pins. This is intended to be a fairly low-level library that exposes an API which makes lower-level management of Arduino pins easier.
 
 ### Beginners
 
