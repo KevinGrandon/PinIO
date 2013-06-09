@@ -10,18 +10,11 @@ pinio.on('ready', function(board) {
 	latchPin.output()
 	clockPin.output()
 
-	function shiftWrite(value, mask) {
-		clockPin.low()
-
-		var method = value & mask ? 'high' : 'low'
-		dataPin[method]()
-
-    	clockPin.high()
-	}
-
-	function shiftOut() {
+	function shiftOut(clockPin, dataPin, value) {
 		for (mask = 128; mask > 0; mask = mask >> 1) {
-			shiftWrite(counter, mask)
+			clockPin.low()
+			dataPin[ value & mask ? 'high' : 'low' ]()
+			clockPin.high()
 		}
 	}
 
@@ -33,7 +26,7 @@ pinio.on('ready', function(board) {
 
 		latchPin.low()
 		
-		shiftOut(counter)
+		shiftOut(clockPin, dataPin, counter)
 
 		latchPin.high()
 
