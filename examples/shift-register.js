@@ -11,7 +11,7 @@ pinio.on('ready', function(board) {
 	clockPin.output()
 
 	function shiftOut(clockPin, dataPin, value) {
-		for (mask = 128; mask > 0; mask = mask >> 1) {
+		for (var mask = 128; mask > 0; mask = mask >> 1) {
 			clockPin.low()
 			dataPin[ value & mask ? 'high' : 'low' ]()
 			clockPin.high()
