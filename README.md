@@ -4,7 +4,7 @@ This is a simple node.js library for controlling multiple arduino boards and gro
 
 ### Beginners
 
-Beginners with arduino would be better off looking at the excellent Johnny5 Library: https://github.com/rwldrn/johnny-five. This library will abstract away a lot of pain points of dealing with pesky bits.
+Beginners with arduino would be better off looking at the excellent Johnny-Five Library: https://github.com/rwldrn/johnny-five. This library will abstract away a lot of pain points of dealing with pesky bits.
 
 ### Installation
 
