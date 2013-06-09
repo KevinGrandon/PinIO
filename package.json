@@ -1,0 +1,32 @@
+{
+  "name": "pinio",
+  "description": "Simple arduino pin management.",
+  "version": "0.0.1",
+  "homepage": "https://github.com/kevingrandon/pinio",
+  "author": {
+    "name": "Kevin Grandon",
+    "email": "kevingrandon@yahoo.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/kevingrandon/pinio.git"
+  },
+  "bugs": {
+    "url": "https://github.com/kevingrandon/pinio/issues"
+  },
+  "licenses": [
+    {
+      "type": "MPL"
+    }
+  ],
+  "main": "pinio.js",
+  "engines": {
+    "node": ">=0.10.0"
+  },
+  "dependencies": {
+    "firmata": ">=0.2.0"
+  },
+  "keywords": [],
+  "readme": "PinIO is simple Arduino multi-board and pin management.",
+  "readmeFilename": "README.md"
+}

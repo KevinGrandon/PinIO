@@ -1,0 +1,34 @@
+# Pin.js - Arduino pin management in javascript
+
+This is a simple node.js library for controlling multiple arduino boards and groups of pins. This is intended to be a fairly low-level library that exposes a library which makes lower-level management of Arduino pins easier.
+
+### Beginners
+
+Beginners with arduino would be better off looking at the excellent Johnny5 Library: https://github.com/rwldrn/johnny-five. This library will abstract away a lot of pain points of dealing with pesky bits.
+
+### Installation
+
+```
+npm install pinio
+```
+
+<<examples>>
+
+### Board API
+
+After initialization, the ready event will be fired with several board objects. A board object may create a pin wrapper with the following commands:
+
+```
+var myLed = board.pins(12)
+var myGroup = board.pins(8, 9)
+```
+
+### Pin API
+
+Each pin group has shortcut methods.
+
+* pin.output() - Sets the pin to output mode
+* pin.high() - digital high
+* pin.low() - digital low
+* pin.pulse() - for things like IR sensors
+* pin.write() - analog signals
