@@ -88,26 +88,28 @@ The best way to position a continuous rotation servo is to set it to stopped, se
 var pinio = new (require('pinio')).Pinio()
 
 pinio.on('ready', function(board) {
- 	// "0" is stop,
- 	// "90" is full speed forward, 
- 	// "-90" is full speed backwards.
- 	var servo = board.pins(8)
+	// "0" is full speed backwards.
+	// "90" is stop,
+	// "180" is full speed forward, 
+	// TODO: I would like to make this -90, 0, 90
 
- 	servo.mode('SERVO')
+	var servo = board.pins(9)
 
- 	var incrementer = 10
- 	var current = 90
+	servo.mode('SERVO')
 
- 	function setPosition() {
- 		servo.write(current)
- 		current += incrementer
+	var incrementer = 10
+	var current = 90
 
- 		if (current >= 180 || current == 0)
- 			incrementer = 0 - incrementer
+	function setPosition() {
+		servo.write(current)
+		current += incrementer
 
- 		setTimeout(setPosition, 500)
- 	}
- 	setPosition()
+		if (current >= 180 || current == 0)
+			incrementer = 0 - incrementer
+
+		setTimeout(setPosition, 500)
+	}
+	setPosition()
 
 })
 
