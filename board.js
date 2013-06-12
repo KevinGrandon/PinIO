@@ -67,6 +67,9 @@ Component.prototype.high = function(pins) {
 }
 
 Component.prototype.pulse = function(value, pulseOut) {
+
+	this.board.firmata.setMaxListeners(100)
+
 	value = value || this.board.firmata.HIGH
 	pulseOut = pulseOut || 5
 
