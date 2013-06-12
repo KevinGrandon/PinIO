@@ -82,9 +82,29 @@ Component.prototype.pulse = function(value, pulseOut) {
 	this.board.firmata.pulseIn(settings, function(duration) {
 		this.emit('read', duration)
 	}.bind(this))
-
 }
 
 Component.prototype.write = function(value) {
 	this.board.firmata.analogWrite(this.config.pins[0], value)
+}
+
+Component.prototype.read = function(callback) {
+
+	var pin = this.config.pins[0]
+
+	var method = 'digitalRead'
+	var mode = 'INPUT'
+
+	// Analog case
+	if (pin.length && pin.length > 1) {
+		mode = 'ANALOG'
+		method = 'analogRead'
+		pin = pin.substring(1)
+	} else {
+		this.mode(mode)
+	}
+
+	this.board.firmata[method](pin, function( data ) {
+		callback(data)
+	})
 }
