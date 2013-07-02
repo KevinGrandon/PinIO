@@ -25,7 +25,12 @@ var examples = [
 		title: 'Shift Register',
 		file: 'shift-register.js',
 		description: 'This example will implement a binary counter with 8 LEDs connected to a shift register on pins 2, 3, 4.'
-	}	
+	},
+	{
+		title: 'Encoder',
+		file: 'encoder.js',
+		description: 'Detecting motor speed with an encoder.'
+	},
 ]
 
 console.log('Building readme example content.')
