@@ -161,20 +161,22 @@ pinio.on('ready', function(board) {
 ```
 #### Encoder
 
-Detecting motor speed with an encoder.
+Detecting motor speed with an encoder. This example uses two PWM digital motors along with two optical encoders. This is similar to code I use in a personal robot.
 
 ```
 var pinio = new (require('pinio')).Pinio()
 
 pinio.on('ready', function(board) {
 
+	board.firmata.setMaxListeners(100)
+
 	var encoders = [
 
 		// Encoder 1
-		[1, 2],
+		[2, 3],
 
 		// Encoder 2
-		[3, 4]
+		[11, 12]
 	]
 
 	function setupEncoder(pins, idx) {
@@ -182,25 +184,38 @@ pinio.on('ready', function(board) {
 		var encodeA = board.pins(pins[0])
 		var encodeB = board.pins(pins[1])
 
-		try {
-			encodeA.mode('INPUT')
-			encodeA.high()
-			encodeB.mode('INPUT')
-			encodeB.high()
-		} catch(e) {
-			console.log('Err ', e)
-		}
+		var totalA = 0 
+		var totalB = 0 
 
 		function gotDataA(val) {
-			console.log('Encoder: ', idx, ' a: ', val)
+			totalA += val
+			//console.log('Encoder: ', idx, ' a: ', val, totalA)
 		}
 
 		function gotDataB(val) {
-			console.log('Encoder: ', idx, ' b: ',  val)
+			totalB += val
+			//console.log('Encoder: ', idx, ' b: ',  val, totalB)
 		}
 
-		encodeA.read(gotDataA)
-		encodeB.read(gotDataB)
+		setInterval(function() {
+			console.log('Encoders: ', totalA, totalB)
+		}, 300)
+
+		function startRead() {
+
+			try {
+				encodeA.mode('INPUT')
+				encodeA.high()
+				encodeB.mode('INPUT')
+				encodeB.high()
+			} catch(e) {
+				console.log('Err ', e)
+			}
+
+			encodeA.read(gotDataA)
+			encodeB.read(gotDataB)
+		}
+		startRead()
 	}
 	encoders.forEach(setupEncoder)
 
@@ -224,7 +239,7 @@ pinio.on('ready', function(board) {
 	motor1Speed.mode('PWM')
 	motor2Speed.mode('PWM')
 
-	var currSpeed = 100
+	var currSpeed = 50
 	var incSpeed = 10
 
 	function go() {

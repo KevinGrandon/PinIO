@@ -29,7 +29,7 @@ var examples = [
 	{
 		title: 'Encoder',
 		file: 'encoder.js',
-		description: 'Detecting motor speed with an encoder.'
+		description: 'Detecting motor speed with an encoder. This example uses two PWM digital motors along with two optical encoders. This is similar to code I use in a personal robot.'
 	},
 ]
 
