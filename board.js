@@ -46,10 +46,12 @@ Component.prototype.mode = function(mode, pins) {
 	pins.forEach(function(pin) {
 		this.board.firmata.pinMode(pin, this.board.firmata.MODES[mode])
 	}.bind(this))
+	return this
 }
 
 Component.prototype.output = function(pins) {
 	this.mode('OUTPUT', pins)
+	return this
 }
 
 Component.prototype.low = function(pins) {
@@ -57,6 +59,7 @@ Component.prototype.low = function(pins) {
 	pins.forEach(function(pin) {
 		this.board.firmata.digitalWrite(pin, this.board.firmata.LOW)
 	}.bind(this))
+	return this
 }
 
 Component.prototype.high = function(pins) {
@@ -64,6 +67,7 @@ Component.prototype.high = function(pins) {
 	pins.forEach(function(pin) {
 		this.board.firmata.digitalWrite(pin, this.board.firmata.HIGH)
 	}.bind(this))
+	return this
 }
 
 Component.prototype.pulse = function(value, pulseOut) {
@@ -82,10 +86,12 @@ Component.prototype.pulse = function(value, pulseOut) {
 	this.board.firmata.pulseIn(settings, function(duration) {
 		this.emit('read', duration)
 	}.bind(this))
+	return this
 }
 
 Component.prototype.write = function(value) {
 	this.board.firmata.analogWrite(this.config.pins[0], value)
+	return this
 }
 
 Component.prototype.read = function(callback) {
@@ -107,4 +113,5 @@ Component.prototype.read = function(callback) {
 	this.board.firmata[method](pin, function( data ) {
 		callback(data)
 	})
+	return this
 }

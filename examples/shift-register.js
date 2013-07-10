@@ -19,7 +19,7 @@ pinio.on('ready', function(board) {
 	}
 
 	var counter = 0
-    function loop() {
+	function loop() {
 
 		if (counter >= 256)
 			return
