@@ -140,7 +140,7 @@ pinio.on('ready', function(board) {
 	}
 
 	var counter = 0
-    function loop() {
+	function loop() {
 
 		if (counter >= 256)
 			return
@@ -170,6 +170,8 @@ pinio.on('ready', function(board) {
 
 	board.firmata.setMaxListeners(100)
 
+	var movement = [0, 0]
+
 	var encoders = [
 
 		// Encoder 1
@@ -184,22 +186,9 @@ pinio.on('ready', function(board) {
 		var encodeA = board.pins(pins[0])
 		var encodeB = board.pins(pins[1])
 
-		var totalA = 0 
-		var totalB = 0 
-
-		function gotDataA(val) {
-			totalA += val
-			//console.log('Encoder: ', idx, ' a: ', val, totalA)
+		function gotData(val) {
+			movement[idx] += val
 		}
-
-		function gotDataB(val) {
-			totalB += val
-			//console.log('Encoder: ', idx, ' b: ',  val, totalB)
-		}
-
-		setInterval(function() {
-			console.log('Encoders: ', totalA, totalB)
-		}, 300)
 
 		function startRead() {
 
@@ -212,55 +201,16 @@ pinio.on('ready', function(board) {
 				console.log('Err ', e)
 			}
 
-			encodeA.read(gotDataA)
-			encodeB.read(gotDataB)
+			encodeA.read(gotData)
+			encodeB.read(gotData)
 		}
 		startRead()
 	}
 	encoders.forEach(setupEncoder)
 
-	// Start the motors
-	var motor1Speed = new board.Component({
-		pin: 5
-	})
-
-	var motor2Speed = new board.Component({
-		pin: 6
-	})
-
-	var motor1Dir = new board.Component({
-		pin: 4
-	})
-
-	var motor2Dir = new board.Component({
-		pin: 7
-	})
-
-	motor1Speed.mode('PWM')
-	motor2Speed.mode('PWM')
-
-	var currSpeed = 50
-	var incSpeed = 10
-
-	function go() {
-		currSpeed += incSpeed
-
-		if (currSpeed >= 250) {
-			incSpeed = 0 - incSpeed
-		}
-
-		motor1Speed.write(currSpeed)
-		motor2Speed.write(currSpeed)
-
-		motor1Dir.high()
-		motor2Dir.high()
-
-		setTimeout(go, 1000)
-	}
-
-	setTimeout(function() {
-		go()
-	}, 1000)
+	setInterval(function() {
+		console.log('Movement: ', movement)
+	}, 300)
 })
 
 ```
