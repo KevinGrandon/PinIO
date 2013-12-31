@@ -9,7 +9,7 @@ var Board = require('./board.js').Board
 
 // Find all USB ports
 var rport = os.platform() === 'darwin' ? 'cu' : 'tty'
-var grep = 'ls /dev | grep -iE \'usb|acm\' | grep -i ' + rport
+var grep = 'ls /dev | grep -iE \'usb|acm|^com\' | grep -i ' + rport
 
 function Pinio() {
 	this._ports = []

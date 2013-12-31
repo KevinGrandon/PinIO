@@ -159,6 +159,21 @@ pinio.on('ready', function(board) {
 })
 
 ```
+#### Potentiometer
+
+Reads the value of a potentiometer on pin analog 0.
+
+```
+var pinio = new (require('pinio')).Pinio()
+
+pinio.on('ready', function(board) {
+	var pot = board.pins('A0')
+	pot.read(function(val) {
+		console.log(val)
+	})
+})
+
+```
 #### Encoder
 
 Detecting motor speed with an encoder. This example uses two PWM digital motors along with two optical encoders. This is similar to code I use in a personal robot.

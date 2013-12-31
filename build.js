@@ -27,6 +27,11 @@ var examples = [
 		description: 'This example will implement a binary counter with 8 LEDs connected to a shift register on pins 2, 3, 4.'
 	},
 	{
+		title: 'Potentiometer',
+		file: 'read-pot.js',
+		description: 'Reads the value of a potentiometer on pin analog 0.'
+	},
+	{
 		title: 'Encoder',
 		file: 'encoder.js',
 		description: 'Detecting motor speed with an encoder. This example uses two PWM digital motors along with two optical encoders. This is similar to code I use in a personal robot.'
