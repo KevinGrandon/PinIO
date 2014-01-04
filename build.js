@@ -32,6 +32,11 @@ var examples = [
 		description: 'Reads the value of a potentiometer on pin analog 0.'
 	},
 	{
+		title: 'PWM Writing',
+		file: 'pwm-output.js',
+		description: 'Outputs a value using pulse-width modulation.'
+	},
+	{
 		title: 'Encoder',
 		file: 'encoder.js',
 		description: 'Detecting motor speed with an encoder. This example uses two PWM digital motors along with two optical encoders. This is similar to code I use in a personal robot.'

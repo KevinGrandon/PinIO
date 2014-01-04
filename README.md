@@ -174,6 +174,19 @@ pinio.on('ready', function(board) {
 })
 
 ```
+#### PWM Writing
+
+Outputs a value using pulse-width modulation.
+
+```
+var pinio = new (require('pinio')).Pinio()
+
+pinio.on('ready', function(board) {
+	var control = board.pins(2)
+	control.pwm(200)
+})
+
+```
 #### Encoder
 
 Detecting motor speed with an encoder. This example uses two PWM digital motors along with two optical encoders. This is similar to code I use in a personal robot.

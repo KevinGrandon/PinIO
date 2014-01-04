@@ -115,3 +115,11 @@ Component.prototype.read = function(callback) {
 	})
 	return this
 }
+
+/**
+ * Writes a PWM value to the pin
+ */
+Component.prototype.pwm = function(value) {
+	this.mode('PWM')
+	this.write(value)
+}
