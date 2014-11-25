@@ -1,7 +1,7 @@
 {
   "name": "pinio",
   "description": "Simple arduino pin management.",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "homepage": "https://github.com/kevingrandon/pinio",
   "author": {
     "name": "Kevin Grandon",
@@ -24,7 +24,7 @@
     "node": ">=0.10.0"
   },
   "dependencies": {
-    "firmata": ">=0.2.0"
+    "firmata": ">=0.3.6"
   },
   "keywords": [],
   "readme": "PinIO is simple Arduino multi-board and pin management.",
